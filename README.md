@@ -6,6 +6,16 @@ Powershell script to send email remainder to all users in Active Directory whose
 <ins>**Script Path**:</ins><br>
 Run ADPasswordExpiryEmail.ps1 script from the "C:\Scripts" folder as admin from the powershell in the AD. You can also change the path.
 
+<ins>**Inital Test - To check if the powershell script is working as expected:**</ins><br>
+
+Change the below variables in ADPasswordExpiryEmail.ps1 and run as admin using powershell from "C:\Scripts" Folder on AD:<br>
+
+$SMTPServer = "mailserver.company.com" (LineNo6)<br>
+$EmailFrom = "donotreply@company.com" (LineNo7)<br>
+$expiredUsers = Get-ADUser -identity firstname.lastname (LineNo106 user firstname.lastname in AD)<br>
+
+You should receive an email to your inbox with the instructions to change the expiring password.
+
 <ins>**Change SMTP server**</ins>:
 
 **LineNo6**:<br>
