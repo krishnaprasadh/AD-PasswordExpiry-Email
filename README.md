@@ -14,21 +14,9 @@ $SMTPServer = "mailserver.company.com" (LineNo6)<br>
 $EmailFrom = "donotreply@company.com" (LineNo7)<br>
 $expiredUsers = Get-ADUser -identity firstname.lastname (LineNo106 user firstname.lastname in AD)<br>
 
-You should receive an email to your inbox with the instructions to change the expiring password.
+You should receive an email to your inbox.
 
-<ins>**Change SMTP server**</ins>:
-
-**LineNo6**:<br>
-$SMTPServer = "mailserver.company.com"<br> 
-**LineNo7**:<br>
-$EmailFrom = "donotreply@company.com"
-
-<ins>**To check and send an email to test for a single user change firstname.lastname**</ins>: 
-
-**LineNo106**:<br>
-$expiredUsers = Get-ADUser -identity **firstname.lastname**
-
-<ins>**To send out email for the actual users whose password is going to expire in the next 7 days change the SearchBase OU=Example,OU=Example,DC=Example,DC=com**</ins> which contains user accounts:
+<ins>**To send out email for the actual users whose password is going to expire in the next upcoming 7 days, change the SearchBase OU=Example,OU=Example,DC=Example,DC=com**</ins> which will contain the users account:
 
 **LineNo100**:<br>
 $expiringUsers = Get-ADUser -filter 'enabled -eq $true' **-SearchBase 'OU=Example,OU=Example,DC=Example,DC=com'**
@@ -42,9 +30,9 @@ Get-ADOrganizationalUnit -Filter 'Name -like "*"' | Format-Table Name, Distingui
 
 The above Get-ADOrganizationalUnit cmdlet gets an organizational unit (OU) object or performs a search to get multiple OUs.<br>
 
-<ins>**Microsoft link**</ins>: https://learn.microsoft.com/en-us/powershell/module/activedirectory/get-adorganizationalunit?view=windowsserver2022-ps
+**Microsoft link**: https://learn.microsoft.com/en-us/powershell/module/activedirectory/get-adorganizationalunit?view=windowsserver2022-ps
 
-<ins>**Change Path instead of running and using from "C:\Scripts" Folder**</ins>:
+<ins>**Change the path running the powershell ps1.script and logs from "C:\Scripts" Folder to different path**</ins>:
 
 **LineNo22**:<br>
 $TrackingFile = 'C:\Scripts\tmp\' + $CurDate + '.tmp'
@@ -61,9 +49,9 @@ if (!(**Test-Path** '.\tmp')) {New-Item -Path '.\tmp' -ItemType Directory}
 **LineNo10**:<br>
 #$LogFile = 'C:\Scripts\log\passwordreset.log'
 
-<ins>**Change remainder days for password expiry instead of checking for the next upcoming 7 days**</ins>:
+<ins>**To send email remainder to all users in Active Directory whose passwords are going to expire in the next upcoming 3 days**</ins>:
 
-**LineNo100 and LineNo101**: at the end of line<br>
+**LineNo100 and LineNo101**: at the end of line change 7 to 3<br>
 (Get-Date).AddDays(**7**)
 
 <ins>**Troubleshoot email**</ins>:
