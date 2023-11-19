@@ -23,7 +23,7 @@ function Email-User($userfirstname, $useremail, $expiredays, $expiredate) {
 	$OldTrackingFile = 'C:\Scripts\tmp\' + $Yesterdate + '.tmp'
 	if (!(Test-Path $TrackingFile)) {
 		#$null > $TrackingFile
-		echo "ThisFileHasListOfEntriesExpiringIn7Days" > $TrackingFile
+		echo "ThisFileHasListOfEntriesExpiringIn3Days" > $TrackingFile
 		if ((Test-Path $OldTrackingFile)) 
 			{ remove-item $OldTrackingFile }
 	}
